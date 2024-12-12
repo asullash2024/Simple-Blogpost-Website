@@ -1,0 +1,41 @@
+<%- include('partials/header') %>
+
+<section id="blog_posts">
+  <div class="container">
+    <div class="row">
+      <% if (posts && posts.length > 0) { %>
+        <% for (let i = 0; i < Math.min(posts.length, 8); i++) { %>
+          <div class="col-md-4 col-lg-3 mb-4">
+            <div class="card" style="width: 15rem;">
+              <div class="card-body">
+                <h5 class="card-title"><%= posts[i].title %></h5>
+                <p class="card-text"><%= posts[i].content.split(' ').slice(0, 5).join(' ') %>...</p>
+                <a href="#" class="card-link">See More</a>
+                <form action="/delete/<%= posts[i].id %>" method="POST" style="display: inline;">
+                  <button type="submit" class="card-link btn btn-link">Delete</button>
+                </form>
+                <form action="/edit/<%= posts[i].id %>" style="display: inline;">
+                  <button type="submit" class="card-link btn btn-link">Edit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      <% } else { %>
+        <div class="col-md-4 col-lg-3 mb-4">
+          <div class="card" style="width: 15rem;">
+            <div class="card-body">
+              <h5 class="card-title">No Posts Available</h5>
+              <p class="card-text">There are no blog posts at the moment.</p>
+            </div>
+          </div>
+        </div>
+      <% } %>
+    </div>
+    <div id="button" class="text-center mt-3">
+      <a href="/see_more" class="btn btn-danger btn-sm">See More</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

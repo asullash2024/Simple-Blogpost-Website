@@ -1,0 +1,46 @@
+<%-include('partials/header')%>
+<section id="blog_posts">
+    <div class="container">
+        
+            <div class="row">
+              <% if(posts && posts.length >0){ %>
+                <% for(let i=0 ; i<locals.posts.length ; i++){ %>
+                  
+                <div class="col-md-4 col-lg-3 mb-4">
+                    <div class="card" style="width: 15rem;">
+                        <div class="card-body">
+                          <h5 class="card-title"><%= locals.posts[i].title %></h5>
+                          
+                          <p class="card-text"><%= locals.posts[i].content.split(' ').slice(0, 5).join(' ') %>...</p>
+                          <a href="#" class="card-link">See More</a>
+                          
+                        </div>
+                      </div>
+                </div>
+                
+                <% }}
+
+      
+    else{ %>
+                  <div class="col-md-4 col-lg-3 mb-4">
+                    <div class="card" style="width: 15rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">No Title</h5>
+                          
+                          <p class="card-text">No Content</p>
+                          <a href="#" class="card-link">See More</a>
+                          
+                        </div>
+                      </div>
+                </div>
+                <% } %>
+                
+              
+            </div>
+            
+          
+           
+    </div>
+</section>
+
+<%-include('partials/footer')%>
